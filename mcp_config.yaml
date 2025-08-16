@@ -1,0 +1,159 @@
+# MCP (Model Context Protocol) 서버 설정
+# 이 파일은 MCP 서버들의 연결 정보를 정의합니다.
+
+mcpServers:
+  # Slack MCP 서버 설정
+  slack:
+    command: "slack-mcp-server"
+    args:
+      - "--token"
+      - "${SLACK_BOT_TOKEN}"
+      - "--workspace"
+      - "${SLACK_WORKSPACE_ID}"
+    env:
+      SLACK_BOT_TOKEN: "${SLACK_BOT_TOKEN}"
+      SLACK_WORKSPACE_ID: "${SLACK_WORKSPACE_ID}"
+      SLACK_APP_TOKEN: "${SLACK_APP_TOKEN}"
+    cwd: "."
+    timeout: 30000
+    retries: 3
+    
+  # Notion MCP 서버 설정
+  notion:
+    command: "notion-mcp-server"
+    args:
+      - "--token"
+      - "${NOTION_INTEGRATION_TOKEN}"
+      - "--workspace"
+      - "${NOTION_WORKSPACE_ID}"
+    env:
+      NOTION_INTEGRATION_TOKEN: "${NOTION_INTEGRATION_TOKEN}"
+      NOTION_WORKSPACE_ID: "${NOTION_WORKSPACE_ID}"
+    cwd: "."
+    timeout: 30000
+    retries: 3
+    
+  # Gmail MCP 서버 설정
+  gmail:
+    command: "gmail-mcp-server"
+    args:
+      - "--credentials"
+      - "${GMAIL_CREDENTIALS_FILE}"
+      - "--token"
+      - "${GMAIL_TOKEN_FILE}"
+    env:
+      GMAIL_CREDENTIALS_FILE: "${GMAIL_CREDENTIALS_FILE}"
+      GMAIL_TOKEN_FILE: "${GMAIL_TOKEN_FILE}"
+      GMAIL_USER_ID: "${GMAIL_USER_ID}"
+    cwd: "."
+    timeout: 30000
+    retries: 3
+
+# MCP 클라이언트 설정
+mcpClient:
+  # 연결 설정
+  connection:
+    timeout: 30000
+    retries: 3
+    backoff: "exponential"
+    
+  # 로깅 설정
+  logging:
+    level: "info"
+    format: "json"
+    
+  # 보안 설정
+  security:
+    enableTLS: true
+    verifyCertificates: true
+    
+  # 성능 설정
+  performance:
+    maxConcurrentRequests: 10
+    requestTimeout: 30000
+    connectionPoolSize: 5
+
+# 서버별 상세 설정
+serverConfigs:
+  slack:
+    # Slack 특정 설정
+    channels:
+      - "research-discussion"
+      - "paper-reviews"
+      - "conference-updates"
+    users:
+      - "김연구원"
+      - "이박사"
+      - "박학생"
+    maxMessages: 1000
+    messageHistoryDays: 30
+    
+  notion:
+    # Notion 특정 설정
+    databases:
+      - "AI Research Projects"
+      - "Research Papers"
+      - "Conference Notes"
+    pages:
+      - "AI Research Direction"
+      - "Team Meeting Notes"
+      - "Project Status"
+    maxResults: 100
+    
+  gmail:
+    # Gmail 특정 설정
+    labels:
+      - "AI Research"
+      - "Conference"
+      - "Paper Review"
+    filters:
+      - "from:research.team@company.com"
+      - "subject:AI research"
+      - "label:AI Research"
+    maxMessages: 500
+    maxThreads: 100
+
+# 환경 변수 템플릿
+environmentVariables:
+  # Slack 설정
+  SLACK_BOT_TOKEN: "xoxb-your-bot-token-here"
+  SLACK_WORKSPACE_ID: "T1234567890"
+  SLACK_APP_TOKEN: "xapp-your-app-token-here"
+  
+  # Notion 설정
+  NOTION_INTEGRATION_TOKEN: "secret-your-integration-token-here"
+  NOTION_WORKSPACE_ID: "workspace-id-here"
+  
+  # Gmail 설정
+  GMAIL_CREDENTIALS_FILE: "path/to/credentials.json"
+  GMAIL_TOKEN_FILE: "path/to/token.json"
+  GMAIL_USER_ID: "user@gmail.com"
+
+# 설치 및 설정 가이드
+setupGuide:
+  slack:
+    - "npm install -g @modelcontextprotocol/server-slack"
+    - "Slack App 생성 및 Bot Token 발급"
+    - "환경 변수 설정"
+    
+  notion:
+    - "npm install -g @modelcontextprotocol/server-notion"
+    - "Notion Integration 생성 및 Token 발급"
+    - "환경 변수 설정"
+    
+  gmail:
+    - "npm install -g @modelcontextprotocol/server-gmail"
+    - "Google Cloud Console에서 OAuth 2.0 인증 정보 생성"
+    - "환경 변수 설정"
+
+# 문제 해결 가이드
+troubleshooting:
+  commonIssues:
+    - "연결 타임아웃: 네트워크 설정 및 방화벽 확인"
+    - "인증 실패: API 키 및 토큰 유효성 확인"
+    - "권한 오류: 서비스별 권한 설정 확인"
+  
+  logs:
+    - "MCP 서버 로그 확인"
+    - "클라이언트 로그 확인"
+    - "네트워크 연결 상태 확인"
