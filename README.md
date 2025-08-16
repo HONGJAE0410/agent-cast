@@ -1,4 +1,4 @@
-# 🎙️ AgentCast | 에이전트 기반 AI 트렌드 팟캐스트 자동화
+# 🎙️ Agent-Cast | 에이전트 기반 AI 트렌드 팟캐스트 자동화
 
 AI 연구 동향을 자동으로 분석하고 팟캐스트를 생성하는 멀티 에이전트 시스템입니다.
 
@@ -7,7 +7,7 @@ AI 연구 동향을 자동으로 분석하고 팟캐스트를 생성하는 멀�
 ```bash
 # 1. 저장소 클론
 git clone <repository-url>
-cd langgraph_mcp
+cd agent-cast
 
 # 2. 의존성 설치
 pip install -r requirements.txt
@@ -17,14 +17,14 @@ cp .env.example .env
 # .env 파일에 API 키 입력
 
 # 4. 워크플로우 실행
-python -m langgraph_mcp.run_workflow "AI 연구 동향에 대한 팟캐스트를 만들어주세요"
+python -m agent-cast.run_workflow "AI 연구 동향에 대한 팟캐스트를 만들어주세요"
 ```
 
 ## 🏗️ 시스템 구조
 
 ### 📁 프로젝트 구조
 ```
-langgraph_mcp/
+agent-cast/
 ├── __init__.py                    - 메인 패키지 초기화
 ├── state.py                       - 상태 관리 시스템
 ├── orchestrator_graph.py          - LangGraph 워크플로우 정의
@@ -113,7 +113,7 @@ mcpServers:
 
 ### 기본 실행
 ```python
-from langgraph_mcp.run_workflow import run_workflow
+from agent-cast.run_workflow import run_workflow
 
 # 전체 워크플로우 실행
 result = await run_workflow("AI 연구 동향에 대한 팟캐스트를 만들어주세요")
@@ -121,7 +121,7 @@ result = await run_workflow("AI 연구 동향에 대한 팟캐스트를 만들�
 
 ### 단계별 실행
 ```python
-from langgraph_mcp.run_workflow import run_step_by_step
+from agent-cast.run_workflow import run_step_by_step
 
 # 특정 단계까지 실행
 result = await run_step_by_step("AI 연구 동향에 대한 팟캐스트를 만들어주세요", steps=["personalize", "searcher"])
@@ -129,7 +129,7 @@ result = await run_step_by_step("AI 연구 동향에 대한 팟캐스트를 만�
 
 ### MCP 통합 테스트
 ```bash
-python -m langgraph_mcp.test_mcp_integration
+python -m agent-cast.test_mcp_integration
 ```
 
 ## 🔧 개발
@@ -172,10 +172,10 @@ self.integrations["new_service"] = NewMCPIntegration(config)
 python -m pytest
 
 # MCP 통합 테스트
-python -m langgraph_mcp.test_mcp_integration
+python -m agent-cast.test_mcp_integration
 
 # 워크플로우 테스트
-python -m langgraph_mcp.run_workflow "테스트 쿼리"
+python -m agent-cast.run_workflow "테스트 쿼리"
 ```
 
 ## 🚨 문제 해결
@@ -189,7 +189,7 @@ python -m langgraph_mcp.run_workflow "테스트 쿼리"
 ```bash
 # 디버그 모드로 실행
 export LOG_LEVEL=DEBUG
-python -m langgraph_mcp.run_workflow "쿼리"
+python -m agent-cast.run_workflow "쿼리"
 ```
 
 ## 📈 성능 최적화
