@@ -6,9 +6,13 @@ from google.generativeai import types
 import wave
 from tqdm import tqdm
 import argparse # 명령행 인자를 처리하기 위해 추가
+from dotenv import load_dotenv
 
 from .base_agent import BaseAgent
 from ..state import WorkflowState
+
+# --- 환경 변수 로드 ---
+load_dotenv()  # .env 파일에서 환경 변수 로드
 
 def read_script_file(filepath):
     """지정된 경로의 텍스트 파일을 읽어 내용을 반환합니다."""
@@ -68,9 +72,11 @@ def main():
         return # 파일 읽기 실패 시 종료
 
     # --- 3. API 키 설정 ---
-    # 경고: 스크립트에 API 키를 직접 작성하는 것은 보안상 위험할 수 있습니다.
-    # 실제 프로덕션 환경에서는 환경 변수 등을 사용하는 것이 좋습니다.
-    API_KEY = 'AIzaSyDF1YsWDMm_b0lfahk-gb7D3L6IRJti7XE'
+    # API 키는 환경 변수에서 안전하게 로드합니다.
+    API_KEY = os.environ.get('GOOGLE_API_KEY')
+    if not API_KEY:
+        print("❌ GOOGLE_API_KEY 환경 변수가 설정되지 않았습니다.")
+        return
     os.environ['GOOGLE_API_KEY'] = API_KEY
     genai.configure(api_key=API_KEY)
 

@@ -13,8 +13,8 @@ cd agent-cast
 pip install -r requirements.txt
 
 # 3. 환경 변수 설정
-cp .env.example .env
-# .env 파일에 API 키 입력
+cp env_example.txt .env
+# .env 파일에 API 키 입력 (아래 섹션 참조)
 
 # 4. 워크플로우 실행
 python -m agent-cast.run_workflow "AI 연구 동향에 대한 팟캐스트를 만들어주세요"
@@ -82,18 +82,51 @@ DBConstructor → Researcher → Critic → ScriptWriter → TTS → 🎵 오디
 
 ### 환경 변수 (`.env`)
 ```env
-# OpenAI API
-OPENAI_API_KEY=your_api_key_here
+# OpenAI API Key (for Critic Agent)
+OPENAI_API_KEY=your_openai_api_key_here
 
-# Slack
-SLACK_BOT_TOKEN=xoxb-your-bot-token
+# Anthropic API Key (for Script Writer Agent)
+ANTHROPIC_API_KEY=your_anthropic_api_key_here
 
-# Notion
-NOTION_INTEGRATION_TOKEN=secret-your-token
+# Google API Key (for Narrator Agent)
+GOOGLE_API_KEY=your_google_api_key_here
 
-# Gmail
-GMAIL_CREDENTIALS_FILE=path/to/credentials.json
+# Perplexity API Key (for Searcher Agent)
+PERPLEXITY_API_KEY=your_perplexity_api_key_here
+
+# Database Configuration (if needed)
+DATABASE_URL=your_database_url_here
+
+# Logging Configuration
+LOG_LEVEL=INFO
+LOG_FILE=agent-cast.log
+
+# Output Configuration
+OUTPUT_BASE_PATH=agent-cast/output
 ```
+
+### 🔑 API 키 설정 가이드
+
+1. **OpenAI API Key**
+   - [OpenAI Platform](https://platform.openai.com/api-keys)에서 발급
+   - Critic Agent에서 사용
+
+2. **Anthropic API Key**
+   - [Anthropic Console](https://console.anthropic.com/)에서 발급
+   - Script Writer Agent에서 사용
+
+3. **Google API Key**
+   - [Google AI Studio](https://makersuite.google.com/app/apikey)에서 발급
+   - Narrator Agent에서 사용
+
+4. **Perplexity API Key**
+   - [Perplexity Settings](https://www.perplexity.ai/settings/api)에서 발급
+   - Searcher Agent에서 사용
+
+⚠️ **보안 주의사항**
+- `.env` 파일은 절대 Git에 커밋하지 마세요
+- API 키를 안전하게 보관하고 정기적으로 갱신하세요
+- 프로덕션 환경에서는 환경 변수를 사용하세요
 
 ### MCP 설정 (`mcp_config.yaml`)
 ```yaml

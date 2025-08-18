@@ -3,9 +3,13 @@
 import os
 import anthropic
 import argparse
+from dotenv import load_dotenv
 
 from .base_agent import BaseAgent
 from ..state import WorkflowState
+
+# --- 환경 변수 로드 ---
+load_dotenv()  # .env 파일에서 환경 변수 로드
 
 def read_research_file(filepath):
     """지정된 경로의 리서치 텍스트 파일을 읽어 내용을 반환합니다."""

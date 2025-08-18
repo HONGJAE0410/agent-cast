@@ -1,2 +1,63 @@
+# Virtual Environment
 .venv
+venv/
+env/
+
+# Environment Variables and API Keys
 .env
+.env.local
+.env.production
+.env.development
+*.env
+
+# API Key Files
+api_keys.txt
+secrets.json
+config.json
+credentials.json
+
+# Output Files (may contain sensitive data)
+output/
+results/
+logs/
+
+# Cache and Temporary Files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Database Files
+*.db
+*.sqlite
+*.sqlite3
+
+# Backup Files
+*.bak
+*.backup
+*.tmp

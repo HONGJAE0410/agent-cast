@@ -1,3 +1,33 @@
-#노션 MCP
-NOTION_INTEGRATION_TOKEN=secret_your_integration_token_here
-NOTION_WORKSPACE_ID=your_workspace_id_here
+# API Keys Configuration Guide
+# Copy this file to .env and fill in your actual API keys
+
+# OpenAI API Key (for Critic Agent)
+# Get from: https://platform.openai.com/api-keys
+OPENAI_API_KEY=your_openai_api_key_here
+
+# Anthropic API Key (for Script Writer Agent)
+# Get from: https://console.anthropic.com/
+ANTHROPIC_API_KEY=your_anthropic_api_key_here
+
+# Google API Key (for Narrator Agent)
+# Get from: https://makersuite.google.com/app/apikey
+GOOGLE_API_KEY=your_google_api_key_here
+
+# Perplexity API Key (for Searcher Agent)
+# Get from: https://www.perplexity.ai/settings/api
+PERPLEXITY_API_KEY=your_perplexity_api_key_here
+
+# Database Configuration (if needed)
+DATABASE_URL=your_database_url_here
+
+# Logging Configuration
+LOG_LEVEL=INFO
+LOG_FILE=agent-cast.log
+
+# Output Configuration
+OUTPUT_BASE_PATH=agent-cast/output
+
+# Security Notes:
+# - Never commit your .env file to version control
+# - Keep your API keys secure and rotate them regularly
+# - Use environment variables in production deployments

@@ -4,8 +4,10 @@ import time
 import json
 import re
 import requests
+import os
 from datetime import datetime, timedelta, timezone
 from urllib.parse import urljoin
+from dotenv import load_dotenv
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -22,13 +24,19 @@ from bs4 import BeautifulSoup
 from .base_agent import BaseAgent
 from ..state import WorkflowState
 
+# --- 환경 변수 로드 ---
+load_dotenv()  # .env 파일에서 환경 변수 로드
+
 from .base_agent import BaseAgent
 from ..state import WorkflowState
 
 class WebSearcher:
     def __init__(self, perplexity_api_key: str = None):
         self.driver = None
-        self.perplexity_api_key = perplexity_api_key or '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'
+        # API 키는 환경 변수에서 안전하게 로드합니다.
+        self.perplexity_api_key = perplexity_api_key or os.environ.get('PERPLEXITY_API_KEY')
+        if not self.perplexity_api_key:
+            print("⚠️ PERPLEXITY_API_KEY 환경 변수가 설정되지 않았습니다.")
         self.setup_driver()
     
     def setup_driver(self):
