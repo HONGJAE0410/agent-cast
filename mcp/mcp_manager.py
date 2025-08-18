@@ -2,10 +2,10 @@
 
 import asyncio
 from typing import Any, Dict, List, Optional
-from .base_mcp_integration import BaseMCPIntegration
-from .slack_mcp_integration import SlackMCPIntegration
-from .notion_mcp_integration import NotionMCPIntegration
-from .gmail_mcp_integration import GmailMCPIntegration
+from .base_mcp import BaseMCP
+from .slack_mcp import SlackMCP
+from .notion_mcp import NotionMCP
+from .gmail_mcp import GmailMCP
 
 
 class MCPManager:
@@ -13,7 +13,7 @@ class MCPManager:
     
     def __init__(self, config: Optional[Dict[str, Any]] = None):
         self.config = config or {}
-        self.integrations: Dict[str, BaseMCPIntegration] = {}
+        self.integrations: Dict[str, BaseMCP] = {}
         self.connection_status: Dict[str, str] = {}
         
         # 기본 통합 초기화
@@ -23,15 +23,15 @@ class MCPManager:
         """MCP 통합들을 초기화합니다."""
         # Slack 통합
         slack_config = self.config.get("slack", {})
-        self.integrations["slack"] = SlackMCPIntegration(slack_config)
+        self.integrations["slack"] = SlackMCP(slack_config)
         
         # Notion 통합
         notion_config = self.config.get("notion", {})
-        self.integrations["notion"] = NotionMCPIntegration(notion_config)
+        self.integrations["notion"] = NotionMCP(notion_config)
         
         # Gmail 통합
         gmail_config = self.config.get("gmail", {})
-        self.integrations["gmail"] = GmailMCPIntegration(gmail_config)
+        self.integrations["gmail"] = GmailMCP(gmail_config)
     
     async def connect_all(self) -> Dict[str, bool]:
         """모든 MCP 통합에 연결합니다."""
@@ -81,7 +81,7 @@ class MCPManager:
         
         return results
     
-    def get_integration(self, name: str) -> Optional[BaseMCPIntegration]:
+    def get_integration(self, name: str) -> Optional[BaseMCP]:
         """지정된 이름의 MCP 통합을 반환합니다."""
         return self.integrations.get(name)
     

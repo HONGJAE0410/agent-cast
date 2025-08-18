@@ -12,11 +12,11 @@ from .agents import (
     TTSAgent
 )
 
-from .integrations import (
+from .mcp import (
     MCPManager,
-    SlackMCPIntegration,
-    NotionMCPIntegration,
-    GmailMCPIntegration
+    SlackMCP,
+    NotionMCP,
+    GmailMCP
 )
 
 from .constants import (
@@ -60,11 +60,11 @@ __all__ = [
     "ScriptWriterAgent",
     "TTSAgent",
     
-    # Integrations
+    # MCP Services
     "MCPManager",
-    "SlackMCPIntegration",
-    "NotionMCPIntegration",
-    "GmailMCPIntegration",
+    "SlackMCP",
+    "NotionMCP",
+    "GmailMCP",
     
     # Constants
     "AGENT_NAMES",

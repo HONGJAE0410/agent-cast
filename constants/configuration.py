@@ -13,6 +13,21 @@ from .ai_models import (
     QUALITY_WEIGHTS
 )
 
+# LLM 모델 통합 (누락된 상수 추가)
+LLM_MODELS = {
+    **OPENAI_MODELS,
+    **ANTHROPIC_MODELS,
+    **GOOGLE_MODELS
+}
+
+# TTS 제공자 (누락된 상수 추가)
+TTS_PROVIDERS = {
+    "OPENAI": "openai",
+    "ELEVENLABS": "elevenlabs",
+    "GOOGLE": "google",
+    "AZURE": "azure"
+}
+
 # 청킹 설정
 CHUNKING_CONFIGS = {
     "default": {

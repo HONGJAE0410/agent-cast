@@ -2,11 +2,11 @@
 
 import asyncio
 from typing import Any, Dict, List, Optional
-from .base_mcp_integration import BaseMCPIntegration
+from .base_mcp import BaseMCP
 
 
-class GmailMCPIntegration(BaseMCPIntegration):
-    """Gmail MCP 서버와의 통합을 담당하는 클래스."""
+class GmailMCP(BaseMCP):
+    """Gmail MCP 서버 연결을 담당하는 클래스."""
     
     def __init__(self, config: Dict[str, Any]):
         super().__init__("gmail", config)

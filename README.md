@@ -50,12 +50,12 @@ agent-cast/
 │   ├── ai_models.py              - AI 모델 설정
 │   ├── prompts.py                - AI 프롬프트
 │   └── configuration.py          - 시스템 설정
-└── integrations/                  - 🔌 MCP 서비스 통합
-    ├── base_mcp_integration.py   - 기본 MCP 통합
+└── mcp/                           - 🔌 MCP 서비스 연결
+    ├── base_mcp.py               - 기본 MCP 클래스
     ├── mcp_manager.py            - MCP 서비스 관리자
-    ├── slack_mcp_integration.py  - Slack 통합
-    ├── notion_mcp_integration.py - Notion 통합
-    └── gmail_mcp_integration.py  - Gmail 통합
+    ├── slack_mcp.py              - Slack 연결
+    ├── notion_mcp.py             - Notion 연결
+    └── gmail_mcp.py              - Gmail 연결
 ```
 
 ### 🔄 워크플로우 흐름
@@ -153,16 +153,16 @@ workflow.add_edge("PREVIOUS_AGENT", "NEW_AGENT")
 
 ### 새로운 MCP 서버 추가
 ```python
-# 1. integrations/ 디렉토리에 새 통합 클래스 생성
-from .base_mcp_integration import BaseMCPIntegration
+# 1. mcp/ 디렉토리에 새 MCP 클래스 생성
+from .base_mcp import BaseMCP
 
-class NewMCPIntegration(BaseMCPIntegration):
+class NewMCP(BaseMCP):
     async def connect(self) -> bool:
         # 연결 로직 구현
         pass
 
-# 2. mcp_manager.py에 통합 추가
-self.integrations["new_service"] = NewMCPIntegration(config)
+# 2. mcp_manager.py에 서비스 추가
+self.integrations["new_service"] = NewMCP(config)
 ```
 
 ## 🧪 테스트
