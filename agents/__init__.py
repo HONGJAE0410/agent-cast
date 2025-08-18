@@ -9,7 +9,8 @@ from .db_constructor_agent import DBConstructorAgent
 from .researcher_agent import ResearcherAgent
 from .critic_agent import CriticAgent
 from .script_writer_agent import ScriptWriterAgent
-from .tts_agent import TTSAgent
+from .narrator_agent import NarratorAgent
+from .summarizer_agent import SummarizerAgent
 
 __all__ = [
     "BaseAgent",
@@ -21,5 +22,6 @@ __all__ = [
     "ResearcherAgent",
     "CriticAgent",
     "ScriptWriterAgent",
-    "TTSAgent"
+    "NarratorAgent",
+    "SummarizerAgent"
 ]
