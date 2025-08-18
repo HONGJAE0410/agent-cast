@@ -123,6 +123,9 @@ class WorkflowState:
     # 개인화 정보
     user_preferences: Dict[str, Any] = field(default_factory=dict)
     user_context: Dict[str, Any] = field(default_factory=dict)
+    personal_info: Dict[str, Any] = field(default_factory=dict)
+    research_context: Dict[str, Any] = field(default_factory=dict)
+    current_progress: Dict[str, Any] = field(default_factory=dict)
     
     # 쿼리 및 검색
     search_queries: List[str] = field(default_factory=list)

@@ -3,7 +3,7 @@
 import asyncio
 import os
 from typing import Any, Dict, List, Optional
-from integrations.base_mcp_integration import BaseMCPIntegration
+from .base_mcp import BaseMCP
 
 # 노션 API 클라이언트 임포트
 try:
@@ -13,8 +13,8 @@ except ImportError:
     NOTION_CLIENT_AVAILABLE = False
 
 
-class NotionMCPIntegration(BaseMCPIntegration):
-    """Notion MCP 서버와의 통합을 담당하는 클래스."""
+class NotionMCP(BaseMCP):
+    """Notion MCP 서버 연결을 담당하는 클래스."""
     
     def __init__(self, config: Dict[str, Any]):
         super().__init__("notion", config)
@@ -611,7 +611,7 @@ async def main():
     print(f"   토큰 길이: {len(config['token']) if config['token'] else 0}")
     print(f"   토큰 시작: {config['token'][:10] + '...' if config['token'] else 'None'}")
     
-    notion = NotionMCPIntegration(config)
+    notion = NotionMCP(config)
     
     print(f"   Client 초기화: {notion._client is not None}")
     

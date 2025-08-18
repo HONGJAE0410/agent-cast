@@ -5,7 +5,7 @@ from typing import Any, Dict, List, Optional
 from ..constants import AGENT_NAMES, PERSONALIZE_SYSTEM_PROMPT
 from .base_agent import BaseAgent, AgentResult
 from ..state import WorkflowState
-from ..integrations import MCPManager
+from ..mcp import MCPManager
 
 
 class PersonalizeAgent(BaseAgent):
@@ -49,7 +49,7 @@ class PersonalizeAgent(BaseAgent):
                 },
                 metadata={
                     "sources_accessed": ["slack", "notion", "gmail"],
-                    "collection_time": asyncio.get_event_loop().time()
+                    "collection_time": asyncio.get_running_loop().time()
                 }
             )
             
