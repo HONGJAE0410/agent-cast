@@ -1,0 +1,51 @@
+{
+  "id": "253d3416-0518-80f0-8e42-e3fa147fc37c",
+  "title": "Naver Cloud AI DevDay",
+  "description": "",
+  "last_edited": "2025-08-18T08:00:00.000Z",
+  "created": "2025-08-18T05:16:00.000Z",
+  "url": "https://www.notion.so/253d3416051880f08e42e3fa147fc37c",
+  "properties": {
+    "생성일": "created_time",
+    "태그": "multi_select",
+    "이름": "title"
+  },
+  "entries": [
+    {
+      "id": "253d3416-0518-806a-9ddb-f4fb4be353a9",
+      "title": "지금 주목할 LLM 기술 흐름과 생성형 AI 적용 인사이트 (네이버클라우드 강지나 수석) (1)",
+      "last_edited": "2025-08-18T08:00:00.000Z",
+      "created": "2025-08-18T06:08:00.000Z",
+      "url": "https://www.notion.so/LLM-AI-1-253d34160518806a9ddbf4fb4be353a9",
+      "properties": {
+        "생성일": "2025-08-18T06:08:00.000Z",
+        "태그": [],
+        "이름": "지금 주목할 LLM 기술 흐름과 생성형 AI 적용 인사이트 (네이버클라우드 강지나 수석) (1)"
+      }
+    },
+    {
+      "id": "253d3416-0518-8062-97fd-ea06d0674f22",
+      "title": "AI Agent 구현을 위한 MCP 활용 방안 (네이버클라우드 최장호 수석) (1)",
+      "last_edited": "2025-08-18T08:00:00.000Z",
+      "created": "2025-08-18T06:08:00.000Z",
+      "url": "https://www.notion.so/AI-Agent-MCP-1-253d34160518806297fdea06d0674f22",
+      "properties": {
+        "생성일": "2025-08-18T06:08:00.000Z",
+        "태그": [],
+        "이름": "AI Agent 구현을 위한 MCP 활용 방안 (네이버클라우드 최장호 수석) (1)"
+      }
+    },
+    {
+      "id": "253d3416-0518-8067-b800-f6b577ec70ab",
+      "title": "Multi-AI Agent 아키텍처와 구현 전략 (네이버클라우드 허창현 리더) (1)",
+      "last_edited": "2025-08-18T08:00:00.000Z",
+      "created": "2025-08-18T06:07:00.000Z",
+      "url": "https://www.notion.so/Multi-AI-Agent-1-253d341605188067b800f6b577ec70ab",
+      "properties": {
+        "생성일": "2025-08-18T06:07:00.000Z",
+        "태그": [],
+        "이름": "Multi-AI Agent 아키텍처와 구현 전략 (네이버클라우드 허창현 리더) (1)"
+      }
+    }
+  ]
+}

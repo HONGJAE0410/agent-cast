@@ -6,7 +6,7 @@ from dataclasses import dataclass
 import asyncio
 import logging
 
-from ..constants import MCP_CONNECTION_STATUS, MCP_ERROR_CODES
+from constants.mcp import MCP_CONNECTION_STATUS, MCP_ERROR_CODES
 
 
 @dataclass
